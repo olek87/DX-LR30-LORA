@@ -60,6 +60,10 @@ void handleJsonInput() {
                             } else if (commandObj.containsKey("help")) {
                                 result = showHelp();
                                 publishLogAsJson("INFO", result);
+                            } else if (commandObj.containsKey("reset")) {
+                                publishLogAsJson("INFO", "Befehl 'reset' empfangen. Gerät wird neu gestartet.");
+                                delay(100); // Kurze Verzögerung, um sicherzustellen, dass die serielle Nachricht gesendet wird.
+                                resetDevice(); // Diese Funktion kehrt nicht zurück.
                             } else if (commandObj.containsKey("sendlora")) {
                                 JsonObject sendLoraObj = commandObj["sendlora"].as<JsonObject>();
                                 if (sendLoraObj.containsKey("payload") && sendLoraObj["payload"].is<const char*>()) {

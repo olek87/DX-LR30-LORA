@@ -12,10 +12,19 @@ String showHelp() {
     helpText += "'help' - Zeigt diese Hilfe an. Bsp: {'command':{'help':{}}} ";
     helpText += "'getLoraConfig' - Zeigt aktuelle LoRa-Konfiguration an. Bsp: {'command':{'getLoraConfig':{}}} ";
     helpText += "'sendLora' - Sendet Base64-kodierte Daten. Bsp: {'command':{'sendLora':{'payload':'...Hallo...'}}} ";
+    helpText += "'reset' - Führt einen Software-Reset des Geräts durch. Bsp: {'command':{'reset':{}}} ";
     helpText += "'setLoraConfig' - Setzt LoRa-Parameter (partiell möglich). Bsp: {'command':{'setLoraConfig':{'Freq':869.618, 'SF':8, 'CR':8, 'BW':62.5, 'Sync': '0x12', 'Offset': 10.3, 'Preamble': 16, 'Power': 21  }}}  ";
 
     return helpText;
 }
+
+String resetDevice() {
+    // NVIC_SystemReset() löst den Reset sofort aus.
+    // Der Rückgabewert wird wahrscheinlich nie verwendet, aber wir behalten ihn für die Konsistenz bei.
+    NVIC_SystemReset(); 
+    return "Gerät wird zurückgesetzt..."; // Diese Zeile wird nicht erreicht.
+}
+
 String getLoraConfig() {
     // 1. Die aktuellen Einstellungen aus dem lora-Modul abrufen
     LoRaSettings settings = getCurrentLoRaSettings();

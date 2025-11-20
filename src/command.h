@@ -9,6 +9,12 @@
 String showHelp();
 
 /**
+ * @brief Löst einen Software-Reset des Mikrocontrollers aus.
+ * @return String Eine Bestätigungsnachricht (wird möglicherweise nicht gesendet, da der Reset sofort erfolgt).
+ */
+String resetDevice();
+
+/**
  * @brief Gibt die aktuelle LoRa-Konfiguration als String zurück.
  * @return String Die aktuelle LoRa-Konfiguration.
  */
